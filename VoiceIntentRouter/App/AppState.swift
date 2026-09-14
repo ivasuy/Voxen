@@ -70,7 +70,7 @@ final class AppState: ObservableObject {
                 return captured
             }
             levelTimer = Timer.scheduledTimer(withTimeInterval: 0.08, repeats: true) { [weak self] _ in
-                Task { @MainActor in
+                Task { @MainActor [weak self] in
                     guard let self, self.phase == .listening else { return }
                     self.audioLevel = self.recorder.level
                     if let startedAt = self.startedAt, Date().timeIntervalSince(startedAt) >= 120 { self.finishRecording() }

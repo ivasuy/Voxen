@@ -219,7 +219,7 @@ bash scripts/test.sh
 Create the same ZIP used by GitHub Releases with:
 
 ~~~sh
-bash scripts/package-release.sh v0.1.0
+bash scripts/package-release.sh v0.1.1
 ~~~
 
 The version argument must match `CFBundleShortVersionString` in `VoiceIntentRouter/Info.plist`. The archive and SHA-256 checksum are written to the ignored `release/` directory. Maintainers publish a release by pushing a matching `v*` tag; the GitHub Actions workflow tests, builds, packages, and attaches both files automatically.
