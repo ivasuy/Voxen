@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="VoiceIntentRouter/Resources/voxen-logo-v1.png" width="128" alt="Voxen logo">
+</p>
+
 # Voxen
 
 **Don't dictate text. Speak intent.**

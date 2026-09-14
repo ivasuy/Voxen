@@ -40,6 +40,8 @@ p { line-height: 1.65; }
 .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .12em; font-weight: 500; color: var(--accent); }
 .button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 21px; border: 1px solid transparent; border-radius: 8px; background: var(--mint); color: #173526; font-size: 14px; font-weight: 600; white-space: nowrap; transition: transform .2s, background .2s; }
 .button:hover { background: #7ce8bf; transform: translateY(-2px); }
+.button-secondary { background: transparent; border-color: var(--line); color: var(--text); }
+.button-secondary:hover { background: var(--soft); border-color: rgba(98, 223, 176, .34); }
 .button-small { min-height: 40px; padding: 9px 15px; font-size: 13px; gap: 12px; }
 .text-link { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
 .text-link svg { transition: transform .2s; }
@@ -147,7 +149,7 @@ kbd { border: 1px solid var(--line); box-shadow: 0 2px 0 var(--line); background
 .setup { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; border-top: 1px solid var(--line); }
 .setup-heading > img { border-radius: 16px; margin-bottom: 30px; }
 .setup-heading > p { font-size: 15px; color: var(--muted); margin-top: 24px; }
-.setup-heading > .button { margin-top: 28px; }
+.setup-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .setup-heading .availability { font-size: 12px; max-width: 320px; }
 .setup-checklist { padding-top: 22px; }
 .setup-checklist h3 { font-size: 23px; }

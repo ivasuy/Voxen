@@ -6,12 +6,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowRight, ArrowUpRight, Check, ClipboardText, Code, Command, CaretDown,
   ChatCircle, Globe, Keyboard, LockKey, Microphone, TerminalWindow,
-  TextAa, SlidersHorizontal, X, List, AppleLogo,
+  TextAa, SlidersHorizontal, X, List, AppleLogo, DownloadSimple, GithubLogo,
 } from '@phosphor-icons/react';
 import { examples } from './examples';
 
 gsap.registerPlugin(ScrollTrigger);
 const icons = { coding: Code, replies: ChatCircle, social: Globe, terminal: TerminalWindow };
+const downloadURL = 'https://github.com/ivasuy/Voxen/releases/latest/download/Voxen-macOS-arm64.zip';
+const githubURL = 'https://github.com/ivasuy/Voxen';
 
 function Logo() {
   return <a className="brand" href="#top" aria-label="Voxen home"><img src="/assets/voxen-logo.png" width="42" height="42" alt="" /><span>Voxen</span></a>;
@@ -29,7 +31,7 @@ function Navigation() {
         <a href="#setup" onClick={() => setMenu(false)}>Setup</a>
       </nav>
       <div className="nav-actions">
-        <a className="button button-small" href="#setup">Set up Voxen <ArrowUpRight size={16} /></a>
+        <a className="button button-small" href={downloadURL} download="Voxen-macOS-arm64.zip">Download <DownloadSimple size={16} /></a>
         <button className="icon-button menu-toggle" aria-label={menu ? 'Close navigation' : 'Open navigation'} aria-expanded={menu} aria-controls="main-navigation" onClick={() => setMenu(!menu)} onKeyDown={e => { if (e.key === 'Escape') setMenu(false); }}>{menu ? <X size={22} /> : <List size={22} />}</button>
       </div>
     </div>
@@ -159,7 +161,7 @@ function Privacy() {
 
 function Setup() {
   return <section className="section setup shell" id="setup">
-    <div className="setup-heading reveal"><img src="/assets/voxen-logo.png" width="74" height="74" alt="" /><h2>Make room for<br />your next thought.</h2><p>Native for macOS 14+ on Apple Silicon.<br />Bring your own AssemblyAI and OpenRouter keys.</p><a className="button" href="https://github.com/ivasuy/Voxen/releases/latest/download/Voxen-macOS-arm64.zip">Download for macOS <ArrowUpRight size={18} /></a><p className="availability">Free and open source. GitHub builds are ad-hoc signed, not Apple-notarized.</p></div>
+    <div className="setup-heading reveal"><img src="/assets/voxen-logo.png" width="74" height="74" alt="" /><h2>Make room for<br />your next thought.</h2><p>Native for macOS 14+ on Apple Silicon.<br />Bring your own AssemblyAI and OpenRouter keys.</p><div className="setup-actions"><a className="button" href={downloadURL} download="Voxen-macOS-arm64.zip">Download for macOS <DownloadSimple size={18} /></a><a className="button button-secondary" href={githubURL} target="_blank" rel="noreferrer">View on GitHub <GithubLogo size={18} /></a></div><p className="availability">Free and open source. GitHub builds are ad-hoc signed, not Apple-notarized.</p></div>
     <div className="setup-checklist reveal">
       <h3>A small setup. Then one shortcut.</h3>
       <ol>
@@ -210,7 +212,7 @@ export default function App() {
       <section className="hero">
         <div className="hero-atmosphere" aria-hidden="true"><span /><span /><span /><span /></div>
         <div className="shell hero-inner">
-          <div className="hero-copy"><img className="hero-mark" src="/assets/voxen-logo.png" width="58" height="58" alt="" /><p className="eyebrow">A voice intent layer for macOS</p><h1>Speak intent, <span>not text.</span></h1><p className="hero-description">Turn a rough thought into writing shaped by your app, selected context and voice.</p><div className="hero-actions"><a className="button" href="#setup">Set up Voxen <ArrowUpRight size={19} /></a><a className="text-link" href="#examples">See context <ArrowRight size={19} /></a></div></div>
+          <div className="hero-copy"><img className="hero-mark" src="/assets/voxen-logo.png" width="58" height="58" alt="" /><p className="eyebrow">A voice intent layer for macOS</p><h1>Speak intent, <span>not text.</span></h1><p className="hero-description">Turn a rough thought into writing shaped by your app, selected context and voice.</p><div className="hero-actions"><a className="button" href={downloadURL} download="Voxen-macOS-arm64.zip">Download for macOS <DownloadSimple size={19} /></a><a className="button button-secondary" href={githubURL} target="_blank" rel="noreferrer">View on GitHub <GithubLogo size={19} /></a></div></div>
           <NativePreview />
         </div>
       </section>
@@ -227,7 +229,7 @@ export default function App() {
       <section className="section shell questions" id="questions"><h2 className="reveal">A few things to know.</h2><div className="faq-list reveal">{questions.map(([question, answer]) => <details key={question}><summary>{question}<CaretDown size={20} /></summary><p>{answer}</p></details>)}</div></section>
     </main>
     <footer className="site-footer">
-      <div className="shell footer-top"><div className="footer-brand"><Logo /><p>A voice intent layer for macOS.<br />Speak intent. Keep your voice.</p></div><nav aria-label="Footer product links"><h3>Explore</h3><a href="#examples">Context</a><a href="#writing">Writing</a><a href="#history">History</a><a href="#setup">Setup</a></nav><nav aria-label="Footer resources"><h3>Resources</h3><a href="/setup.md" download="Voxen-setup.md">Build instructions</a><a href="#questions">Questions</a><a href="https://www.assemblyai.com/dashboard/signup" target="_blank" rel="noreferrer">AssemblyAI key <ArrowUpRight size={13} /></a><a href="https://openrouter.ai/settings/keys" target="_blank" rel="noreferrer">OpenRouter key <ArrowUpRight size={13} /></a></nav><a className="button" href="#setup">Set up Voxen <ArrowUpRight size={18} /></a></div>
+      <div className="shell footer-top"><div className="footer-brand"><Logo /><p>A voice intent layer for macOS.<br />Speak intent. Keep your voice.</p></div><nav aria-label="Footer product links"><h3>Explore</h3><a href="#examples">Context</a><a href="#writing">Writing</a><a href="#history">History</a><a href="#setup">Setup</a></nav><nav aria-label="Footer resources"><h3>Resources</h3><a href={githubURL} target="_blank" rel="noreferrer">GitHub <GithubLogo size={13} /></a><a href="/setup.md" download="Voxen-setup.md">Build instructions</a><a href="#questions">Questions</a><a href="https://www.assemblyai.com/dashboard/signup" target="_blank" rel="noreferrer">AssemblyAI key <ArrowUpRight size={13} /></a><a href="https://openrouter.ai/settings/keys" target="_blank" rel="noreferrer">OpenRouter key <ArrowUpRight size={13} /></a></nav><a className="button" href={downloadURL} download="Voxen-macOS-arm64.zip">Download for macOS <DownloadSimple size={18} /></a></div>
       <div className="shell footer-wordmark" aria-hidden="true">Voxen</div>
       <div className="shell footer-bottom"><p>Local-first macOS utility.</p><p>macOS 14+ · Apple Silicon</p><a href="#top">Back to top <ArrowUpRight size={15} /></a></div>
     </footer>
