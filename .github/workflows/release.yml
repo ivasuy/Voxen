@@ -20,9 +20,12 @@ jobs:
       - name: Run offline tests
         env:
           VOXEN_SKIP_HOTKEY_TEST: "1"
+          VOXEN_STRICT_CONCURRENCY: "1"
         run: bash scripts/test.sh
 
       - name: Build and package app
+        env:
+          VOXEN_STRICT_CONCURRENCY: "1"
         run: bash scripts/package-release.sh "$GITHUB_REF_NAME"
 
       - name: Publish GitHub Release

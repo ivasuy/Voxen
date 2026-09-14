@@ -63,8 +63,9 @@ struct AssemblyAIService: SpeechTranscribing {
 
     private func deleteTranscript(_ id: String) async {
         // Separate task allows best-effort cleanup even after the voice request was cancelled.
-        var cleanup = request("transcript/\(id)", method: "DELETE")
-        cleanup.timeoutInterval = 3
+        var cleanupRequest = request("transcript/\(id)", method: "DELETE")
+        cleanupRequest.timeoutInterval = 3
+        let cleanup = cleanupRequest
         let client = client
         let success = await Task.detached {
             (try? await client.send(cleanup, service: "AssemblyAI cleanup")) != nil

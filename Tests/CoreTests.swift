@@ -3,14 +3,14 @@ import AVFoundation
 import AppKit
 import ApplicationServices
 
-struct FixtureProvider: LLMProvider {
+struct FixtureProvider: LLMProvider, @unchecked Sendable {
     let respond: (String, String) throws -> String
     func generate(instructions: String, input: String) async throws -> String { try respond(instructions, input) }
 }
 
 final class MockURLProtocol: URLProtocol {
-    static var handler: ((URLRequest) throws -> (Int, String))?
-    static var responseHeaders: [String: String] = [:]
+    nonisolated(unsafe) static var handler: ((URLRequest) throws -> (Int, String))?
+    nonisolated(unsafe) static var responseHeaders: [String: String] = [:]
     override class func canInit(with request: URLRequest) -> Bool { true }
     override class func canonicalRequest(for request: URLRequest) -> URLRequest { request }
     override func startLoading() {
@@ -43,7 +43,7 @@ final class MemoryClipboard: GeneratedTextWriting {
 
 @main
 struct CoreTests {
-    static var checks = 0
+    nonisolated(unsafe) static var checks = 0
     static func check(_ value: @autoclosure () -> Bool, _ message: String) {
         guard value() else { fatalError("FAIL: \(message)") }
         checks += 1
@@ -560,7 +560,7 @@ struct CoreTests {
         check(generic.contains("not merely the transcript"), "Social writing requires refinement")
         check(PromptTemplates.instructions(for: .social, hasSelection: true, modeIsOverride: true).contains("selected this mode manually"), "Manual modes distinguished from automatic hints")
 
-        struct InspectingProvider: LLMProvider {
+        struct InspectingProvider: LLMProvider, @unchecked Sendable {
             let inspect: (String, String) throws -> String
             func generate(instructions: String, input: String) async throws -> String { try inspect(instructions, input) }
         }

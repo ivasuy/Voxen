@@ -43,12 +43,11 @@ struct IntentTransformer {
         return GeneratedText(result)
     }
 
-    @MainActor
     @discardableResult
     func transformAndCopy(_ context: VoiceContext, to clipboard: any GeneratedTextWriting) async throws -> GeneratedText {
         let generated = try await transform(context)
         try Task.checkCancellation()
-        try clipboard.copy(generated)
+        try await clipboard.copy(generated)
         return generated
     }
 }

@@ -3,7 +3,7 @@ import os
 
 /// Copies plain text only. Never posts keyboard events or restores old content.
 @MainActor
-protocol GeneratedTextWriting {
+protocol GeneratedTextWriting: Sendable {
     func copy(_ generated: GeneratedText) throws
 }
 

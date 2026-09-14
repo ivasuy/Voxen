@@ -1,6 +1,6 @@
 import Foundation
 
-protocol LLMProvider {
+protocol LLMProvider: Sendable {
     func generate(instructions: String, input: String) async throws -> String
 }
 
