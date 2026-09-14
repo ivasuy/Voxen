@@ -16,11 +16,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private let hotkey = GlobalHotkeyManager()
     private lazy var state = AppState()
     private let overlay = FloatingOverlayController()
+    private let isBrowserContextProbe = ProcessInfo.processInfo.arguments.contains("--probe-browser-context")
     private var settingsWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.accessory)
-        if CommandLine.arguments.contains("--probe-browser-context") {
+        if isBrowserContextProbe {
             Task { @MainActor in
                 await BrowserCaptureProbe.run()
                 NSApp.terminate(nil)
@@ -115,6 +116,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         settingsWindow?.orderFrontRegardless()
     }
     func applicationWillTerminate(_ notification: Notification) {
-        if !CommandLine.arguments.contains("--probe-browser-context") { state.shutDown() }
+        if !isBrowserContextProbe { state.shutDown() }
     }
 }
