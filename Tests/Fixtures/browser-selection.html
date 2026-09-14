@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Voice Intent Router Capture Fixture</title>
+<style>body { font: 20px system-ui; padding: 48px; max-width: 760px; } p { line-height: 1.5; }</style>
+<h1>Browser selection test</h1>
+<div id="source"><p>Could you send the revised draft on Monday?</p><p>Please confirm the review time.</p></div>
+<p>This is synthetic test content. No APIs, clipboard, or microphone are used.</p>
+<script>
+function highlight() {
+  const range = document.createRange();
+  range.selectNodeContents(document.getElementById('source'));
+  const selection = window.getSelection();
+  selection.removeAllRanges(); selection.addRange(range);
+}
+window.addEventListener('load', highlight);
+</script>

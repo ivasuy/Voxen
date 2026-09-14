@@ -1,0 +1,34 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode and Swift build state
+build/
+DerivedData/
+.build/
+.swiftpm/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Landing-page dependencies and generated output
+landing/node_modules/
+landing/dist/
+landing/artwork/
+landing/.playwright-cli/
+landing/output/
+
+# Local browser artifacts
+.playwright-cli/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Packaged release artifacts
+release/
+*.dmg
+*.zip
