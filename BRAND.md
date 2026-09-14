@@ -19,7 +19,7 @@ Accessibility: status text plus icon, not color alone; full error remains in men
 
 ## Generated artwork
 
-Created with the built-in imagegen tool, not the API/CLI fallback. Original saved as `VoiceIntentRouter/Resources/voxen-logo-v1.png`. `Voxen.icns` contains mechanical macOS icon-size conversions only, reproducible with `bash scripts/package-icon.sh`. The logo is bundled by both build.sh and Xcode's Resources phase. SF Symbols remain the monochrome menu-bar/status glyphs for native contrast at tiny sizes.
+Created with the built-in imagegen tool, not the API/CLI fallback. Original saved as `Voxen/Resources/voxen-logo-v1.png`. `Voxen.icns` contains mechanical macOS icon-size conversions only, reproducible with `bash scripts/package-icon.sh`. The logo is bundled by both build.sh and Xcode's Resources phase. SF Symbols remain the monochrome menu-bar/status glyphs for native contrast at tiny sizes.
 
 The app's display name and current bundle name are Voxen (`build/Voxen.app`). Internal identifiers remain stable for saved keys/preferences. The previous named bundle is preserved by relaunch.sh in build/PreviousBuilds. Ad-hoc signing and moving the bundle can require Accessibility reauthorization.
 

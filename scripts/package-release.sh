@@ -3,7 +3,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-BUNDLE_VERSION="$(plutil -extract CFBundleShortVersionString raw VoiceIntentRouter/Info.plist)"
+BUNDLE_VERSION="$(plutil -extract CFBundleShortVersionString raw Voxen/Info.plist)"
 REQUESTED_VERSION="${1:-v$BUNDLE_VERSION}"
 
 if [[ "$REQUESTED_VERSION" != "v$BUNDLE_VERSION" ]]; then

@@ -2,6 +2,7 @@ import AppKit
 
 let path = FileManager.default.currentDirectoryPath + "/build/Voxen.app"
 guard let bundle = Bundle(path: path), bundle.bundleIdentifier == "dev.voiceintent.router",
+      bundle.executableURL?.lastPathComponent == "Voxen",
       bundle.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String == "Voxen",
       let iconName = bundle.object(forInfoDictionaryKey: "CFBundleIconFile") as? String,
       let resources = bundle.resourceURL,

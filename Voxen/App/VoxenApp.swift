@@ -2,7 +2,7 @@ import SwiftUI
 import AppKit
 
 @main
-struct VoiceIntentRouterApp: App {
+struct VoxenApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
 
     var body: some Scene {

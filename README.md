@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="VoiceIntentRouter/Resources/voxen-logo-v1.png" width="128" alt="Voxen logo">
+  <img src="Voxen/Resources/voxen-logo-v1.png" width="128" alt="Voxen logo">
 </p>
 
 # Voxen
@@ -144,9 +144,9 @@ flowchart TD
 Native SwiftUI and AppKit, Carbon hotkey registration, AVAudioEngine, URLSession, and Keychain. No third-party dependencies, screen capture, database, or cloud application infrastructure.
 
 ~~~text
-VoiceIntentRouter/
-├── VoiceIntentRouter.xcodeproj/
-├── VoiceIntentRouter/
+Voxen/
+├── Voxen.xcodeproj/
+├── Voxen/
 │   ├── App/           # Menu bar and request lifecycle
 │   ├── Audio/         # Recording, levels, WAV encoding
 │   ├── Speech/        # AssemblyAI / SpeechTranscribing
@@ -186,7 +186,7 @@ On the first Chromium capture, the app requests web Accessibility activation and
 
 Enable **Website & selected text** in Settings and choose **Mode → Auto** for automatic detection. The overlay shows only status. If the browser does not expose its URL, website-specific writing preferences cannot match; app/mode/global defaults still work. Choose Social from the menu or explicitly say “Write a post…” when needed. Reset the mode to Auto afterward.
 
-The shared [system prompt](VoiceIntentRouter/Intent/PromptTemplates.swift) defines writing tasks, not platform recipes. Every selected model receives the same destination and writing-preference instructions. Flexible depth guidance, source/intent separation, factual-preservation constraints and a final-text-only contract guide output. This is prompt tuning, not model fine-tuning.
+The shared [system prompt](Voxen/Intent/PromptTemplates.swift) defines writing tasks, not platform recipes. Every selected model receives the same destination and writing-preference instructions. Flexible depth guidance, source/intent separation, factual-preservation constraints and a final-text-only contract guide output. This is prompt tuning, not model fine-tuning.
 
 To reply to a particular post or email, highlight its text and trigger recording while the highlight is still active. Say what you want the reply to convey. To edit the highlighted text instead, ask for a rewrite. After Copied, move to the desired composer and paste. The app does not know unselected page contents and should request missing context rather than invent it.
 
@@ -223,10 +223,10 @@ bash scripts/test.sh
 Create the same ZIP used by GitHub Releases with:
 
 ~~~sh
-bash scripts/package-release.sh v0.1.3
+bash scripts/package-release.sh v0.1.4
 ~~~
 
-The version argument must match `CFBundleShortVersionString` in `VoiceIntentRouter/Info.plist`. The archive and SHA-256 checksum are written to the ignored `release/` directory. Maintainers publish a release by pushing a matching `v*` tag; the GitHub Actions workflow tests, builds, packages, and attaches both files automatically.
+The version argument must match `CFBundleShortVersionString` in `Voxen/Info.plist`. The archive and SHA-256 checksum are written to the ignored `release/` directory. Maintainers publish a release by pushing a matching `v*` tag; the GitHub Actions workflow tests, builds, packages, and attaches both files automatically.
 
 The command-line build produces an ad-hoc-signed arm64 app using Apple's Command Line Tools. Full Xcode is not installed on the development machine. The included Xcode project and shared scheme can be opened in Xcode to build for My Mac.
 
