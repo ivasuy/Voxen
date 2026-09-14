@@ -1,5 +1,5 @@
 import Foundation
-import os
+@preconcurrency import os
 
 /// Only this file can create clipboard-eligible text, after a successful model response.
 struct GeneratedText {

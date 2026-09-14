@@ -1,5 +1,5 @@
 import Foundation
-import os
+@preconcurrency import os
 
 struct AssemblyAIService: SpeechTranscribing {
     let apiKey: String
