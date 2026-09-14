@@ -1,5 +1,5 @@
 import Foundation
 
-protocol SpeechTranscribing {
+protocol SpeechTranscribing: Sendable {
     func transcribe(audio: Data) async throws -> String
 }

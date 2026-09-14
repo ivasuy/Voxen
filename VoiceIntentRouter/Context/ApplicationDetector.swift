@@ -77,7 +77,7 @@ struct BrowserContextReader {
 
     static func element(_ value: CFTypeRef?) -> AXUIElement? {
         guard let value, CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
-        return unsafeBitCast(value, to: AXUIElement.self)
+        return unsafeDowncast(value, to: AXUIElement.self)
     }
 
     static func website(_ value: CFTypeRef?) -> WebsiteContext? {
@@ -205,7 +205,7 @@ enum BrowserCaptureProbe {
             return error == .success ? result : nil
         }
         guard let windowValue = get(app, kAXFocusedWindowAttribute), CFGetTypeID(windowValue) == AXUIElementGetTypeID() else { return }
-        let window = unsafeBitCast(windowValue, to: AXUIElement.self)
+        let window = unsafeDowncast(windowValue, to: AXUIElement.self)
         guard let title = get(window, kAXTitleAttribute) as? String, title.hasPrefix("Voice Intent Router Capture Fixture") else {
             report["fixtureFocused"] = false; return
         }
@@ -213,7 +213,7 @@ enum BrowserCaptureProbe {
         chrome.activate(options: [])
         try? await Task.sleep(for: .milliseconds(200))
         if let focusedValue = get(app, kAXFocusedUIElementAttribute), CFGetTypeID(focusedValue) == AXUIElementGetTypeID() {
-            let focused = unsafeBitCast(focusedValue, to: AXUIElement.self)
+            let focused = unsafeDowncast(focusedValue, to: AXUIElement.self)
             report["focusedRole"] = get(focused, kAXRoleAttribute) as? String ?? "unavailable"
         }
         let started = Date()

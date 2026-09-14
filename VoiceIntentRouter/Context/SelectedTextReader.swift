@@ -53,7 +53,7 @@ struct SelectedTextReader {
 
             // Some controls expose only a selection range. Request that substring, not their entire value.
             if let value = get(element, kAXSelectedTextRangeAttribute), CFGetTypeID(value) == AXValueGetTypeID() {
-                let axValue = unsafeBitCast(value, to: AXValue.self)
+                let axValue = unsafeDowncast(value, to: AXValue.self)
                 var raw = CFRange()
                 if AXValueGetType(axValue) == .cfRange, AXValueGetValue(axValue, .cfRange, &raw),
                    let range = Self.boundedRange(raw), Date() < deadline,
@@ -78,6 +78,6 @@ struct SelectedTextReader {
 
     private static func element(_ value: CFTypeRef?) -> AXUIElement? {
         guard let value, CFGetTypeID(value) == AXUIElementGetTypeID() else { return nil }
-        return unsafeBitCast(value, to: AXUIElement.self)
+        return unsafeDowncast(value, to: AXUIElement.self)
     }
 }

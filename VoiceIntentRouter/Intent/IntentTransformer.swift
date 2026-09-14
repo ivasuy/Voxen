@@ -7,7 +7,7 @@ struct GeneratedText {
     fileprivate init(_ text: String) { self.text = text }
 }
 
-struct IntentTransformer {
+struct IntentTransformer: Sendable {
     let provider: any LLMProvider
     private let log = Logger(subsystem: "dev.voiceintent.router", category: "Intent")
 
